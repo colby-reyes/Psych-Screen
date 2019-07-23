@@ -8,17 +8,20 @@ class App:
 
 class Questionnaire:
     def __init__(self, head, prompts, answers, scores):
-        self.prompt = prompt
-        self.answer = answer
+        self.head = head
+        self.prompts = prompts
+        self.answers = answers
+        self.scores = scores
         #return super().__init__(prompt, answer)
 
 header="Over the past 2 weeks, how often have you been bothered by...\n"
 opts = ["0","1","2","3"]
-dispOpts = """0 - Not at all
-1 - Several days
-2 - More than half the days
-3 - Nearly every day
-"""
+dispOpts = [
+    "0 - Not at all",
+    "1 - Several days",
+    "2 - More than half the days",
+    "3 - Nearly every day"
+]
 
 phq_prompts = [
     Questionnaire(header, "Little interest or pleasure in doing things", dispOpts, opts),
@@ -33,20 +36,36 @@ phq_prompts = [
 ]
 
 
-endOpts = """
-(a) Not difficult at all
-(b) Somewhat difficult
-(c) Very difficult
-(d) Extremely difficult
-"""
+endOpts = [
+"0 - Not difficult at all",
+"1 - Somewhat difficult",
+"2 - Very difficult",
+"3 - Extremely difficult"
+]
 
-endQ = Questionnaire(head="",prompts="If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?",answers=endOpts,scores=opts)
+endQ = [Questionnaire(head="",prompts="If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?",answers=endOpts,scores=opts)]
 
-def run_qstnr(questions): 
+
+def run_qstnr(q): 
     score = 0
-    for q in questions:
-        print(q.head)
-        ans = input(q.prompt)
-        if ans in q.scores:
+    i = 0
+    while i < len(q):
+        print(q[i].head + q[i].prompts)
+        for lin in q[i].answers:
+            print(lin)
+        ans = input("\n Answer:  ")
+        if ans in q[i].scores:
             score += int(ans)
+            print("Your answer: {}".format(q[i].answers[int(ans)][4:]))
+            print("_"*50 + "\n")
+            i+=1
+        else:
+            print("Answer not recognized...please try again...")
+            print("_"*50 + "\n")
     return score
+
+score_now = run_qstnr(phq_prompts)
+fin = run_qstnr(endQ)
+dif = endOpts[fin]
+
+print("Your PHQ-9 score today is: {}\nYou rated your level of difficulty as: {}".format(score_now,dif[4:]))
