@@ -1,13 +1,12 @@
-from tkinter import messagebox
 class App:
     def __main__(self):
         if __name__ == "__main__":
             pass
 
-    def __init__(self):
-        print("Initializing Psych-Screen app...")
+    def __init__(self, prints):
+        self.prints = print("Initializing Psych-Screen app...")
     
-    #msg = messagebox("Hello","Hello")
+
 
 class Questionnaire:
     def __init__(self, head, prompts, answers):

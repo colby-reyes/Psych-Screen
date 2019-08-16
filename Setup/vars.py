@@ -1,5 +1,6 @@
 from fndef import *
 
+App.__init__()
 header="Over the past 2 weeks, how often have you been bothered by...\n"
 
 dispOpts = {
