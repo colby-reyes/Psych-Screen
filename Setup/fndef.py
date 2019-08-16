@@ -9,6 +9,10 @@ class App:
 
 
 class Questionnaire:
+    """
+    This class sets up the format for any questionnaire-type form. Currently run only through terminal.
+    Arguments are: head, prompts, answers
+    """
     def __init__(self, head, prompts, answers):
         self.head = head
         self.prompts = prompts
