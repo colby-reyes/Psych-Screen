@@ -31,6 +31,7 @@ def run_qstnr(q):
             print(lin)
         ans = input("\n Answer:  ")
         if ans == "Q":
+            score = "*** ERROR: Incomplete ***"
             break
         else:
             try:
