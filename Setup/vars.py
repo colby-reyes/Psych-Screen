@@ -30,7 +30,7 @@ endOpts = {
     2:"2 - Very difficult",
     3:"3 - Extremely difficult",
     "Q":"\n( Enter Q to quit )",
-    "*** ERROR: Incomplete ***":"******* ERROR: Incomplete ***"
+    "*** ERROR: Incomplete ***":"****** ERROR: Incomplete ***"
 }
 
 endQ = [Questionnaire(head="",prompts="If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?",answers=endOpts)]
